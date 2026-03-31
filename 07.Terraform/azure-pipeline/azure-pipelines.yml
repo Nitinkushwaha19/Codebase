@@ -1,0 +1,27 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+- group: azure
+
+parameters:
+- name: environment
+  type: string
+  default: dev
+  values:
+  - dev
+  - stage
+  - prod
+
+stages:
+
+- template: templates/stage-scan.yml
+
+- template: templates/stage-plan.yml
+
+- template: templates/stage-apply.yml
+  parameters:
+    environment: ${{ parameters.environment }}

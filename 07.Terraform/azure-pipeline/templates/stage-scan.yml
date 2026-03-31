@@ -1,0 +1,30 @@
+stages:
+- stage: Scan
+  displayName: "Terraform Security Scan"
+  jobs:
+  - job: SecurityScan
+    steps:
+    - checkout: self
+
+    - task: TerraformInstaller@1
+      inputs:
+        terraformVersion: '1.8.5'
+
+    - script: |
+        curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+        tflint --init
+        tflint
+      displayName: "Run TFLint"
+
+    - script: |
+        curl -L -o terrascan.tar.gz \
+        https://github.com/tenable/terrascan/releases/download/v1.18.5/terrascan_1.18.5_Linux_x86_64.tar.gz
+
+        tar -xzf terrascan.tar.gz
+        sudo mv terrascan /usr/local/bin/
+
+        terrascan scan -t azure -d . -o json > terrascan-report.json || true
+      displayName: "Run Terrascan"
+
+    - publish: terrascan-report.json
+      artifact: terrascan-report

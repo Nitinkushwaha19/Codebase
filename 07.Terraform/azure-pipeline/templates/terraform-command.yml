@@ -1,0 +1,32 @@
+parameters:
+  - name: terraformCommand
+    type: string
+  - name: workingDirectory
+    type: string
+    default: '.'
+
+steps:
+
+- task: TerraformInstaller@1
+  displayName: "Install Terraform"
+  inputs:
+    terraformVersion: '1.8.5'
+
+- script: terraform init
+  displayName: "Terraform Init"
+  workingDirectory: ${{ parameters.workingDirectory }}
+  env:
+    ARM_CLIENT_ID: $(appId)
+    ARM_CLIENT_SECRET: $(appSecret)
+    ARM_TENANT_ID: $(tenantId)
+    ARM_SUBSCRIPTION_ID: $(subscriptionId)
+
+- script: |
+    terraform ${{ parameters.terraformCommand }}
+  displayName: "Terraform Command"
+  workingDirectory: ${{ parameters.workingDirectory }}
+  env:
+    ARM_CLIENT_ID: $(appId)
+    ARM_CLIENT_SECRET: $(appSecret)
+    ARM_TENANT_ID: $(tenantId)
+    ARM_SUBSCRIPTION_ID: $(subscriptionId)

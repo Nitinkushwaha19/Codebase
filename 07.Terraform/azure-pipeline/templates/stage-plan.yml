@@ -1,0 +1,15 @@
+stages:
+- stage: Plan
+  displayName: "Terraform Plan"
+  dependsOn: Scan
+  jobs:
+  - job: TerraformPlan
+    steps:
+    - checkout: self
+
+    - template: terraform-command.yml
+      parameters:
+        terraformCommand: "plan -out=tfplan"
+
+    - publish: tfplan
+      artifact: terraformPlan

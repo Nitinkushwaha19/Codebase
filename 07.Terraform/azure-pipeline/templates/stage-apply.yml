@@ -1,0 +1,25 @@
+parameters:
+  - name: environment
+    type: string
+
+stages:
+- stage: Apply
+  displayName: "Terraform Apply"
+  condition: succeeded()
+  trigger: manual
+  jobs:
+  - deployment: TerraformApply
+    displayName: "Apply Infrastructure"
+    environment: terraform-${{ parameters.environment }}
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+
+          - download: current
+            artifact: terraformPlan
+
+          - template: terraform-command.yml
+            parameters:
+              terraformCommand: "apply -auto-approve $(Pipeline.Workspace)/terraformPlan/tfplan"

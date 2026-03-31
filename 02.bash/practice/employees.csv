@@ -1,0 +1,32 @@
+id,name,age,department,salary,city,experience
+1,Alice,25,HR,40000,New Delhi,2
+1,Alice,25,HR,40000,New Delhi,2
+2,Bob,30,IT,60000,Mumbai,5
+3,Charlie,28,Finance,50000,Pune,4
+4,David,35,IT,70000,Bangalore,8
+5,Eva,22,HR,45000,Delhi,1
+6,Frank,40,Finance,80000,Chennai,10
+7,Grace,27,IT,65000,Hyderabad,3
+8,Hannah,32,Marketing,55000,Mumbai,6
+9,Ian,29,HR,48000,Pune,4
+10,Jack,45,Management,90000,Bangalore,15
+11,Kate,31,IT,72000,Delhi,7
+12,Luke,26,Finance,51000,Chennai,3
+13,Mia,24,Marketing,47000,Hyderabad,2
+14,Nina,38,HR,62000,Mumbai,9
+15,Owen,33,IT,68000,Pune,6
+16,Paul,41,Finance,82000,Bangalore,11
+17,Quinn,23,Marketing,46000,Delhi,1
+18,Rachel,36,IT,75000,Chennai,8
+19,Steve,28,HR,49000,Hyderabad,4
+20,Tina,34,Finance,77000,Mumbai,7
+21,Uma,27,Marketing,53000,Pune,3
+22,Victor,39,Management,88000,Delhi,12
+23,Wendy,26,IT,61000,Bangalore,3
+24,Xavier,42,Finance,83000,Chennai,13
+25,Yara,29,HR,52000,Hyderabad,5
+26,Zack,37,IT,74000,Mumbai,9
+27,Aaron,31,Finance,69000,Pune,6
+28,Bella,28,Marketing,54000,Delhi,4
+29,Carl,35,IT,71000,Chennai,8
+30,Diana,33,HR,58000,Bangalore,7
