@@ -1,0 +1,25 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nginx-pod
+  namespace: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+    resources:
+      requests:
+        memory: "125Mi"
+        cpu:  "250m"
+        ephemeral-storage: "1Gi"
+      limits:
+        memory: "256Mi"
+        cpu: "500m"
+        ephemeral-storage: "2Gi"
+  tolerations:
+    - key: "prod"
+      operator: "Equal"
+      value: "true"
+      effect: "NoSchedule"
