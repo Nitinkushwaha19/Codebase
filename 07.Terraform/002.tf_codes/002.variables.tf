@@ -39,3 +39,24 @@ variable "virtual_subnet_address_space" {
   type        = list(string)
   description = "address space for subnet"
 }
+
+variable "resource_public_ip_name" {
+  type        = string
+  description = "name of public ip"
+}
+
+# log analytics workspace
+variable "resource_log_analytics_workspace_name" {
+  type        = string
+  description = "name of log analytics workspace"
+}
+
+variable "environment" {
+  type        = string
+  description = "environment name"
+}
+
+variable "project" {
+  type        = string
+  description = "project name"
+}
